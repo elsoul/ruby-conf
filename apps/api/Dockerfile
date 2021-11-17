@@ -1,6 +1,6 @@
 FROM ruby:3.0.2
 
-RUN apt-get update -qq && apt-get install -y nodejs redis-server
+RUN apt-get update -qq && apt-get install -y nodejs redis-server apt-utils
 
 USER root
 
@@ -9,7 +9,7 @@ WORKDIR /myapp
 
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-RUN gem install bundler:2.2.27
+RUN gem install bundler:2.2.31
 RUN bundle
 COPY . /myapp
 
